@@ -27,6 +27,14 @@
     }
     h1 {
       font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+    .version {
+      background: rgba(255, 255, 255, 0.15);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 1rem;
       margin-bottom: 15px;
     }
     .subtitle {
@@ -41,6 +49,49 @@
       margin: 0 auto;
       padding: 0 20px;
     }
+
+    /* Преимущества */
+    .advantages {
+      margin: 50px 0;
+    }
+    .advantages h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #FFD700;
+    }
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .advantage-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.3s ease;
+    }
+    .advantage-card:hover {
+      transform: translateY(-5px);
+    }
+    .advantage-icon {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+    .advantage-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .advantage-card p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    /* Старые блоки */
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -76,6 +127,7 @@
       color: #9C27B0;
       font-weight: bold;
     }
+
     .download-section {
       text-align: center;
       margin: 50px 0;
@@ -102,6 +154,35 @@
       font-size: 0.95rem;
       opacity: 0.8;
     }
+
+    .changelog {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 16px;
+      padding: 25px;
+      margin-top: 30px;
+      text-align: left;
+    }
+    .changelog h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #FFD700;
+    }
+    .changelog ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .changelog li {
+      margin: 10px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+    .changelog li:before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      color: #FFD700;
+    }
+
     footer {
       text-align: center;
       margin-top: 60px;
@@ -112,6 +193,7 @@
       .logo { font-size: 2.5rem; }
       h1 { font-size: 1.8rem; }
       .download-btn { padding: 14px 32px; font-size: 1.2rem; }
+      .changelog, .advantage-card { padding: 15px; }
     }
   </style>
 </head>
@@ -119,10 +201,40 @@
   <header>
     <div class="logo">🛡️</div>
     <h1>Kostrinsky AntiVirus</h1>
+    <div class="version">Версия 1.1</div>
     <p class="subtitle">Бесплатный антивирус с защитой в реальном времени, основанный на технологии ClamAV. Работает в фоне, сворачивается в трей и защищает ваш компьютер 24/7.</p>
   </header>
 
   <div class="container">
+
+    <!-- НОВЫЙ БЛОК: Отличия -->
+    <div class="advantages">
+      <h2>Почему Kostrinsky AntiVirus лучше?</h2>
+      <div class="advantage-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon">🔒</div>
+          <h3>Полная приватность</h3>
+          <p>Мы НЕ собираем ваши данные, не отправляем файлы в облако и не отслеживаем активность. Всё сканирование — только на вашем ПК.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">⚡</div>
+          <h3>Лёгкий и быстрый</h3>
+          <p>Не тормозит систему даже на слабых компьютерах. Занимает меньше 100 МБ на диске и не грузит процессор в простое.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">🎮</div>
+          <h3>Игровой режим</h3>
+          <p>Уникальная функция — один клик и вы получаете максимум FPS. Другие антивирусы не умеют так бережно относиться к играм.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">🧾</div>
+          <h3>Прозрачность</h3>
+          <p>Открытый движок ClamAV + чистый код без скрытых модулей. Вы точно знаете, что работает на вашем компьютере.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Старые блоки -->
     <div class="features">
       <div class="feature">
         <h3>Основные функции</h3>
@@ -148,9 +260,20 @@
 
     <div class="download-section">
       <button class="download-btn" onclick="downloadInstaller()">
-        📥 Скачать бесплатно (v1.0)
+        📥 Скачать бесплатно (v1.1)
       </button>
       <p class="download-note">Установочный файл (~60 МБ). Windows 10/11, 64-bit.</p>
+
+      <div class="changelog">
+        <h3>Что нового в версии 1.1</h3>
+        <ul>
+          <li>Исправлено мелькание консоли при защите в реальном времени</li>
+          <li>Полная проверка теперь сканирует только пользовательские папки (Desktop, Documents, Downloads)</li>
+          <li>Устранено дублирование файлов при сканировании</li>
+          <li>Добавлен «Игровой режим» для максимального FPS — временно отключает защиту во время игр</li>
+          <li>Улучшена стабильность и производительность</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -161,8 +284,7 @@
 
   <script>
     function downloadInstaller() {
-      // Замени на реальную ссылку, когда загрузишь файл на хостинг
-      const url = "https://drive.google.com/file/d/1Xypst9Ky5MOGk0qN76sDdnTDxX-NmHxF/view?usp=sharing";
+      const url = "https://github.com/ВАШ-НИК/kostrinsky-av/releases/download/v1.1/KostrinskyAntiVirus_Setup.exe";
       const a = document.createElement('a');
       a.href = url;
       a.download = "KostrinskyAntiVirus_Setup.exe";
